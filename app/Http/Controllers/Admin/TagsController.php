@@ -54,7 +54,7 @@ class TagsController extends Controller
             $up=$tag->save();
                if ($up) {
                   
-                    return redirect()->back()->with('success','New Tag Added ');
+                    return redirect()->back()->with('success','New Brand Added ');
                }
     }
 

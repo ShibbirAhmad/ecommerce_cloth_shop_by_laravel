@@ -16,22 +16,38 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name','role_id','username', 'email', 'password',
     ];
 
+    //to know role or user
     public function role()
     {
         return $this->belongsTo('App\Role');
     }
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+
+        //to know how many post of user
+
+        public function posts()
+        {
+            return $this->hasMany('App\Post');
+        }
+
+
+          //to know how many product of user
+          public function products()
+          {
+              return $this->hasMany('App\Product');
+          }
+
+        /**
+         * The attributes that should be hidden for arrays.
+         *
+         * @var array
+         */
+        protected $hidden = [
+            'password', 'remember_token',
+        ];
 
     /**
      * The attributes that should be cast to native types.

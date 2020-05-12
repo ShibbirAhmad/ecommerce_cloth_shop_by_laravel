@@ -23,6 +23,7 @@
                 <th>Serial</th>
                 <th>Name</th>
                 <th>Image</th>
+                <th>price</th>
                 <th>Description </th>
                 <th>is_stock</th>
                 <th>Is_Approved</th>
@@ -34,6 +35,7 @@
                         <th>serial</th>
                         <th>Name</th>
                         <th>Image</th>
+                        <th>price</th>
                         <th>Description  </th>
                         <th>is_stock</th>
                         <th>Is_Approved</th>
@@ -45,11 +47,12 @@
                 <tr>
                        <td>{{$key+1}}</td> 
                        <td>{{$data->name}}</td>
-                       <td><img src="{{asset('bakcend/images/product/'.$data->image)}}" 
+                       <td><img src="{{asset('backend/images/product/'.$data->image)}}" 
                             style="width:80px;height:80px;border-radius:10px;" alt=""></td>
-                       <td> {{$data->short_description }} </td>
+                       <td>{{ $data->price }}</td>
+                       <td> {{ str_limit($data->short_description,25)  }} </td>
                        <td>
-                               @if ($data->status==true)
+                               @if ($data->is_stock==true)
                                    <span class="badge bg-blue">Available</span>
                                @else
                                <span class="badge bg-pink">Unavailable</span> 

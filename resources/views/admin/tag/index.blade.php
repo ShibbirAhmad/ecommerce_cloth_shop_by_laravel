@@ -13,11 +13,11 @@
 
 
 
-<a class="btn btn-primary m-2" data-toggle="modal" href="#addNewModal">Add New</a>
+<a class="btn btn-primary m-2" data-toggle="modal" href="#addNewModal">Add New Brand</a>
     <table class="table table-bordered  ">
             <thead>
                     <th>ID</th>
-                    <th>Tags</th>
+                    <th>Brand</th>
                     <th>Action</th>
             </thead>
             <tbody>

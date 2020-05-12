@@ -126,16 +126,19 @@
                         <div class="product-information"><!--/product-information-->
                             <img src="{{asset('site/images/product-details/new.jpg')}}" class="newarrival" alt="" />
                             <h2>{{ $product->name }}</h2>
-                            <p>Web ID: 1089772</p>
+                     
                             <img src="{{asset('site/images/product-details/rating.png ')}}" alt="" />
                             <span>
+                                {!! Form::open(['route' => ['add.cart',$product->id] ]) !!}
                                 <span><i class="fa fa-money"></i>{{ $product->price }}</span>
                                 <label>Quantity:</label>
-                                <input type="number" value="1" />
-                                <button type="button" class="btn btn-fefault cart">
+                             
+                                <input name="quantity" type="number" value="1"  />
+                                <button type="submit" class="btn btn-default cart">
                                     <i class="fa fa-shopping-cart"></i>
                                     Add to cart
                                 </button>
+                                {!! Form::close() !!}
                             </span>
                             <p><b>Availability:</b> @if ($product->is_stock==true)
                                 <span class="badge bg-pink"> available </span>

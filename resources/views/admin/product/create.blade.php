@@ -24,7 +24,7 @@
         <!--card for product title and image--> 
         <div class="card">
              <div class="card-header">
-                 <div class="card-title"><h4>product Name & Image</h4></div>
+                 <div class="card-title"><h4>product Name Image & price </h4></div>
              </div>
              
              <div class="card-body">
@@ -35,9 +35,12 @@
                  {!! Form::label('productImage', 'product Related Image', ) !!}
                  {!! Form::file('productImage', ['class' => 'form-control form-inline ']) !!}  
                 </div>
+                 
+                {!! Form::label('price','product price') !!}
+                {!! Form::text('price', '', ['class' => 'form-control']) !!}
 
-                <div class="form-group ">
-                    <input type="checkbox" id="publish" class="filled-in " name="status" value="1">
+                <div class="form-group mt-2 ">
+                    <input type="checkbox" id="publish" class="filled-in " name="is_stock" value="1">
                     <label for="publish">STOCK</label>
                 </div>
              </div>

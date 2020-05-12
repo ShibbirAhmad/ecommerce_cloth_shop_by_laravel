@@ -394,7 +394,7 @@ ul.sub-menu {
 .iframe-img {
   position: relative;
   display: block;
-  height: 61px;
+  height: 61px; 
   width:157px;
   margin-bottom: 10px;
   border: 2px solid #CCCCC6;
@@ -873,6 +873,13 @@ h2.title {
 	font-family: 'Roboto', sans-serif;
 	font-size: 24px;
 	font-weight: 700;
+}
+
+.productinfo h4{
+	color: #FE980F;
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	font-weight: 600;
 }
 
 .product_img{width:268px;height:249px;border-radius:5px;}

@@ -15,7 +15,7 @@
     <div class="card">
             <div class="card-body">
                        
- <table class="table table-bordered table-responsive text-center ">
+ <table class="table table-bordered text-center ">
         <thead>
                 <tr>
                         <th>Serial</th>
@@ -24,7 +24,7 @@
                         <th>price</th>
                         <th>Description </th>
                         <th>is_stock</th>
-                        <th>Is_Approved</th>
+                        
                         <th colspan="2" >Action</th>
                   </tr> 
         </thead>
@@ -36,7 +36,7 @@
                         <th>price</th>
                         <th>Description </th>
                         <th>is_stock</th>
-                        <th>Is_Approved</th>
+                       
                         <th colspan="2" >Action</th>
                   </tr> 
         </tfoot>

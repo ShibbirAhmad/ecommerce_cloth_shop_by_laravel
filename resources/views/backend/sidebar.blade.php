@@ -13,7 +13,17 @@
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
                         <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                        <li><a href="javascript:void(0);"><i class="material-icons">input</i>Log Out</a></li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                             <i class="material-icons">input</i>Log Out
+                         </a>
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -23,12 +33,134 @@
         <div class="menu">
             <ul class="list">
                 <li class="header">MAIN NAVIGATION</li>
-                <li class="active">
-                    <a href="index.html">
-                        <i class="material-icons">home</i>
-                        <span>Home</span>
+               {{-- check sidebar item for admin --}}
+                @if (Request::is('admin*'))
+                <li class="{{Request::is('admin/dashboard') ? 'active' : ''}}">
+                    <a href="{{route('admin.dashboard')}}">
+                        <i class="material-icons">dashboard</i>
+                        <span>Dashboard</span>
                     </a>
                 </li>
+               
+              <!--tags option start from here-->
+                <li class="{{Request::is('admin/tag*') ? 'active' : ''}}">
+                    <a href="{{route('admin.tag.index')}}">
+                        <i class="material-icons">label</i>
+                        <span>Brand</span>
+                    </a>
+                </li>
+
+               <!--category option start from here-->
+                <li class="{{Request::is('admin/category*') ? 'active' : ''}}">
+                    <a href="{{route('admin.category.index')}}">
+                        <i class="material-icons">label</i>
+                        <span>Category</span>
+                    </a>
+                </li>
+                  
+                 <!--post option start from here-->
+                 <li class="{{Request::is('admin/post*') ? 'active' : ''}}">
+                    <a href="{{route('admin.post.index')}}">
+                        <i class="material-icons">library_books</i>
+                        <span>Posts</span>
+                    </a>
+                </li>
+
+                 <!--post pending option start from here-->
+                 <li class="{{Request::is('admin/pending/post') ? 'active' : ''}}">
+                    <a href="{{route('admin.post.pending')}}">
+                        <i class="material-icons">library_books</i>
+                        <span>Posts Pending</span>
+                    </a>
+                 </li>
+
+                <!--post option start from here-->
+                <li class="{{Request::is('admin/product*') ? 'active' : ''}}">
+                <a href="{{route('admin.product.index')}}">
+                    <i class="material-icons">library_books</i>
+                    <span>Products</span>
+                </a>
+                </li>
+
+
+                 <!--post pending option start from here-->
+                 <li class="{{Request::is('admin/pending/product') ? 'active' : ''}}">
+                    <a href="{{route('admin.product.pending')}}">
+                        <i class="material-icons">library_books</i>
+                        <span>Product Pending</span>
+                    </a>
+                 </li>
+                
+                    <!--post pending option start from here-->
+                 <li class="{{Request::is('admin/subscriber') ? 'active' : ''}}">
+                    <a href="{{route('admin.subscriber')}}">
+                        <i class="material-icons">subscription</i>
+                        <span>Subscriber</span>
+                    </a>
+                 </li>
+    
+
+                <li class="header">System </li> 
+                 <li> 
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                     <i class="material-icons">input</i>
+                     <span>Log Out</span> 
+                 </a>
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                 </li> 
+                 
+                 <li></li>
+
+                @endif
+               
+
+
+
+
+           
+                {{-- sidebar item for author --}}
+                @if (Request::is('author*'))
+                <li class="{{Request::is('author/dashboard') ? 'active' : ''}}">
+                    <a href="{{route('author.dashboard')}}">
+                        <i class="material-icons">dashboard</i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <!--post option start from here-->
+                <li class="{{Request::is('author/post*') ? 'active' : ''}}">
+                <a href="{{route('author.post.index')}}">
+                    <i class="material-icons">library_books</i>
+                    <span>Posts</span>
+                </a>
+              </li>
+              
+               
+                <!--post option start from here-->
+                <li class="{{Request::is('author/product*') ? 'active' : ''}}">
+                    <a href="{{route('author.product.index')}}">
+                        <i class="material-icons">library_books</i>
+                        <span>Products</span>
+                    </a>
+                </li>
+
+                <li class="header">System </li> 
+                 <li> 
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                     <i class="material-icons">input</i>
+                     <span>Log Out</span> 
+                 </a>
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                 </li> 
+                @endif
            
                 <li>
                     <a href="javascript:void(0);">

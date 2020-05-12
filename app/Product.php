@@ -30,10 +30,18 @@ class Product extends Model
         return $this->belongsToMany('App\Tag')->withTimestamps();
     }
 
+    
+    //to know author
+    public function user()
+ 
+    {
+        return $this->belongsTo('App\User');
+    }
 
 
-
-
-
+    public function scopeApproved($query){
+          
+         return $query->where('is_approved',true);
+    }
 
 }

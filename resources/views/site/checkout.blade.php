@@ -28,26 +28,17 @@
 							<p>Shopper Information</p>
 							<form>
 								<input type="text" placeholder="Display Name">
-								<input type="text" placeholder="User Name">
+								<input type="text" placeholder="Email*">
 								<input type="password" placeholder="Password">
 								<input type="password" placeholder="Confirm password">
 							</form>
 							<a class="btn btn-primary" href="">Get Quotes</a>
-							<a class="btn btn-primary" href="">Continue</a>
+							{!! Form::submit('order confirmly', ['class'=> 'btn btn-primary']) !!}
 						</div>
 					</div>
-					<div class="col-sm-5 clearfix">
+					<div style="margin-top:40px;" class="col-sm-5 clearfix">
 						<div class="bill-to">
-							<p>Bill To</p>
-							<div class="form-one">
-								<form>
-						
-									<input type="text" placeholder="Email*">
-									<input type="text" placeholder="Title">
-									<input type="text" placeholder="First Name *">
-									<input type="text" placeholder="Address 1 *">
-								</form>
-							</div>
+							
 							<div class="form-two">
 								<form>
 									<input type="text" placeholder="Zip / Postal Code *">
@@ -73,7 +64,6 @@
 										<option>Kustiya</option>
 										<option>Jamalpur</option>
 									</select>
-									<input type="password" placeholder="Confirm password">
 
 									<input type="text" placeholder="Mobile Phone">
 								
@@ -126,13 +116,20 @@
                         <td class="cart_price">
                             <h2 class="cart_total_price" ><i class="fa fa-money"> </i>{{ $cart->product_price }}</h2>
                         </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="{{$cart->product_quantity }}" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
-                            </div>
-                        </td>
+						<td class="cart_quantity">
+							<div class="cart_quantity_button">
+							 {!! Form::open(['method'=> 'PATCH' , 'route' =>[  'update.cart',$cart->id]]) !!}
+							  
+								<button id="add" class="cart_quantity_up">+</button>
+								 
+								 <input  class="cart_quantity_input" type="text" name="quantity" value="{{$cart->product_quantity }}" autocomplete="off" size="2">
+								
+								 <button id="subtract" class="cart_quantity_down">-</button>
+								 {!! Form::close() !!}
+							  </div>
+						   
+ 
+						 </td>
                         <td class="cart_total">
                             <h2 class="cart_total_price"><i class="fa fa-money"></i>{{$total=$cart->product_price * $cart->product_quantity }}</h2>
                         </td>
