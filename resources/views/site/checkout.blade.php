@@ -20,66 +20,81 @@
 				</ol>
 			</div><!--/breadcrums-->
 
-
+         {!! Form::open(['route' => 'order']) !!}  
 			<div class="shopper-informations">
 				<div class="row">
 					<div class="col-sm-3">
 						<div class="shopper-info">
 							<p>Shopper Information</p>
-							<form>
-								<input type="text" placeholder="Display Name">
-								<input type="text" placeholder="Email*">
-								<input type="password" placeholder="Password">
-								<input type="password" placeholder="Confirm password">
-							</form>
-							<a class="btn btn-primary" href="">Get Quotes</a>
-							{!! Form::submit('order confirmly', ['class'=> 'btn btn-primary']) !!}
+							<div class="form-group ">
+								<input type="text" name="customer_name" class="form-control mb-3"  required  placeholder="Customer Name">
+								<input style="margin-top:5px;"  type="email" name="shoper_email" class="form-control " required  placeholder="Email*">
+						
+							</div>
+
+						
 						</div>
 					</div>
 					<div style="margin-top:40px;" class="col-sm-5 clearfix">
 						<div class="bill-to">
 							
-							<div class="form-two">
-								<form>
-									<input type="text" placeholder="Zip / Postal Code *">
-									<select>
+								<div class="form-group mt-3">
+									<input type="text" name="zip_code" class="form-control" placeholder="Zip / Postal Code *">
+									<select name="division" style="margin-top:5px;" class="form-control  ">
 										<option>-- Division --</option>
-										<option>Dhaka</option>
-										<option>Sylhet</option>
-										<option>Rangpur</option>
-										<option>Borishal</option>
-										<option>Rajshahi</option>
-										<option>Khulna</option>
-										<option>Chitagong</option>
-										<option>Mymonsingh</option>
+										<option value="Dhaka " >Dhaka</option>
+										<option value="Sylhet " >Sylhet</option>
+										<option value="Rangpur " >Rangpur</option>
+										<option value="Borishal " >Borishal</option>
+										<option value="Rajshahi " >Rajshahi</option>
+										<option value=" Khulna" >Khulna</option>
+										<option value=" Chitagong" >Chitagong</option>
+										<option value="Mymonsingh " >Mymonsingh</option>
 									</select>
-									<select>
+									<select name="district" style="margin-top:5px;"  class="form-control ">
 										<option>-- District / Region --</option>
-										<option>Sylhet</option>
-										<option>Sonumgonj</option>
-										<option>Moulvibazar</option>
-										<option>Habigonj</option>
-										<option>Kishorgonj</option>
-										<option>Bramhonbaria</option>
-										<option>Kustiya</option>
-										<option>Jamalpur</option>
+										<option value="Sylhet " >Sylhet</option>
+										<option value="Sonumgonj " >Sonumgonj</option>
+										<option value="Moulvibazar " >Moulvibazar</option>
+										<option value=" Habigonj" >Habigonj</option>
+										<option value="Kisorgonj " >Kishorgonj</option>
+										<option value=" Bramhonbaria" >Bramhonbaria</option>
+										<option value=" Kustiya" >Kustiya</option>
+										<option value="Jamalpur " >Jamalpur</option>
 									</select>
 
-									<input type="text" placeholder="Mobile Phone">
+									<input  style="margin-top:5px;"  name="shoper_phone" type="text" class="form-control" required   placeholder="Mobile Phone">
 								
-								</form>
-							</div>
+								</div>
+								{!! Form::submit('order', ['class'=> 'btn btn-primary']) !!}	
 						</div>
 					</div>
 					<div class="col-sm-4">
 						<div class="order-message">
 							<p>Shipping Order</p>
-							<textarea name="message"  placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
+							<textarea name="receieveing_description" class="form-control" placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
 							<label><input type="checkbox"> Shipping to bill address</label>
 						</div>	
 					</div>					
 				</div>
 			</div>
+			<div class="payment-options">
+				<span>
+					<label><input type="radio"  name="payment_method" value="bank"  checked > Direct Bank Transfer</label>
+				</span>
+                        
+				<span>
+					<label><input type="radio" name="payment_method" value="bkash" checked > BKASH</label>
+				</span>
+
+				<span>
+					<label><input type="radio" name="payment_method" value="payment on delevery" checked > Payment on Delevery </label>
+				</span>
+				<span>
+					<label><input type="radio" name="payment_method" value="paypal" checked > Paypal</label>
+				</span>
+		</div>
+		
 			<div class="review-payment">
 				<h2>Review & Payment</h2>
 			</div>
@@ -118,14 +133,14 @@
                         </td>
 						<td class="cart_quantity">
 							<div class="cart_quantity_button">
-							 {!! Form::open(['method'=> 'PATCH' , 'route' =>[  'update.cart',$cart->id]]) !!}
+							
 							  
 								<button id="add" class="cart_quantity_up">+</button>
 								 
 								 <input  class="cart_quantity_input" type="text" name="quantity" value="{{$cart->product_quantity }}" autocomplete="off" size="2">
 								
 								 <button id="subtract" class="cart_quantity_down">-</button>
-								 {!! Form::close() !!}
+							
 							  </div>
 						   
  
@@ -136,9 +151,9 @@
                         <td class="cart_delete">
                                 
                         <div class=" cart_quantity_delete ">
-                            {!! Form::open(['method'=>'DELETE', 'route'=> ['delete.cart',$cart->id ]] ) !!}
+                            
                               <button class="btnDelete btn btn-danger"><i class="fa fa-times"></i></button>
-                             {!! Form::close() !!}
+                         
                           </div>
                         
                         </td>
@@ -170,7 +185,12 @@
 									<tr>
 										<td>Total</td>
 										<td><span><i class="fa fa-money"></i><?php $payable_amount=$sum + $vat ; 
-                                            echo $payable_amount ; ?></span></td>
+											echo $payable_amount ; ?>
+											  </span>
+											  {!! Form::hidden('payable_amount',$payable_amount ) !!}
+											
+											  {!! Form::close() !!}
+											</td>
 									</tr>
 								</table>
 							</td>
@@ -178,18 +198,9 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="payment-options">
-					<span>
-						<label><input type="checkbox"> Direct Bank Transfer</label>
-					</span>
-					<span>
-						<label><input type="checkbox"> Check Payment</label>
-					</span>
-					<span>
-						<label><input type="checkbox"> Paypal</label>
-					</span>
-				</div>
+
 		</div>
+
 	</section> <!--/#cart_items-->
 
 	

@@ -1,6 +1,6 @@
 @extends('site.layout.master')
 
-@section('title','login')
+@section('title','register')
 
 @push('css')
     

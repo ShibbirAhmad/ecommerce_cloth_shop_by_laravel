@@ -30,11 +30,17 @@
      Route::PATCH('cart/{id}','CartController@updateCart')->name('update.cart');
      Route::delete('cart/{id}','CartController@cartDelete')->name('delete.cart');
     
+    
+
      //rout group for authenticate custmoer 
      Route::group(['middleware' => ['auth','customer'] ], function () {
 
           Route::get('checkout','OrderController@index')->name('checkout');
-          
+          Route::post('order','OrderController@storeOrder')->name('order'); 
+          Route::get('payment','PaymentController@index')->name('payment');
+          Route::post('payment-receieve','PaymentController@paymentReceieve')->name('payment.add');
+          Route::delete('deleted-alr-cart','CartController@ordered_product_removeCart')->name('clear.cart');
+     
          
      });
 

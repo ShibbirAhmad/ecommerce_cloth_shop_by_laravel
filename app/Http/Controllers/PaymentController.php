@@ -49,7 +49,7 @@ class PaymentController extends Controller
 
            if ($payment->save()) {
              
-              return redirect()->route('cler.cart');
+              return redirect()->route('clear.cart');
            }
 
            

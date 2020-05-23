@@ -101,4 +101,29 @@ class CartController extends Controller
 
 
 
+     //function for which product already ordered from cart tables
+     public function ordered_product_removeCart(){
+              session_start();
+             $session_id=session_id();
+             $cart_dlt=Cart::where('session_id',$session_id)->get();
+             if ( $cart_dlt->delete()) {
+                 
+                    session_destroy();
+                    session_unset();
+
+                    return redirect()->route('home');
+             }
+     }
+
+
+
+
+
+
+
+
+
+
+
+
 }
